@@ -1,0 +1,33 @@
+extends@: default
+
+form:
+  fields:
+    tabs:
+      type: tabs
+      active: 1
+      fields:
+        options:
+          type: tab
+          title: PLUGIN_ADMIN.OPTIONS
+          fields:
+            myfields:
+              type: section
+              title: My Fields
+              underline: true
+              fields:
+                header.author:
+                  type: text
+                  label: Author
+                  placeholder: Enter authors name
+                header.fullurl:
+                  type: text
+                  label: Article URL
+                  placeholder: Enter source name
+                header.srcname:
+                  type: text
+                  label: Source Name
+                  placeholder: Enter source name
+                header.srcurl:
+                  type: text
+                  label: Source URL
+                  placeholder: Enter source URL
