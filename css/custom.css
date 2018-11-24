@@ -1,1 +1,76 @@
+body {
+  font-family: CMUConcreteRoman;
+  font-size: 18px;
+}
 
+.logo {
+  font-family: HiPerspective;
+  line-height: 0.8;
+}
+
+.headline-btn {
+  width: 100%;
+}
+
+.button {
+  border: none;
+  padding: 10px 20px;
+}
+
+.pagination li {
+	border: 0px;
+}
+
+.wrapper {
+  max-width: 1260px;
+}
+
+
+/* If the screen size is 601px wide or more */
+@media screen and (min-width: 601px) {
+  .logo {
+    font-size: 8vw;
+    margin-top: -.1em;
+  }
+  .tags-full {
+    float: right;
+  }
+}
+/* If the screen size is 769px wide or more */
+@media screen and (min-width: 769px) {
+  .tags-small {
+    display: none;
+  }
+  .srcname-small {
+    display: none;
+  }
+}
+/* If the screen size is 768px wide or less */
+@media screen and (max-width: 768px) {
+  .logo {
+    font-size: 11vw;
+  }
+  .tags-full {
+    display: none;
+  }
+  .srcname-full {
+    display: none;
+  }
+  .srcname-small {
+    background-color: #2e6830;
+  }
+}
+
+/* If the screen size is 600px wide or less */
+@media screen and (max-width: 600px) {
+  .logo {
+    font-size: 13vw;
+    margin-top: 0.1em;
+  }
+  .tags-full {
+    display: none;
+  }
+  .srcname-full {
+    display: none;
+  }
+}
