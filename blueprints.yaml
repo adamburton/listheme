@@ -1,0 +1,8 @@
+name: listheme
+version: 0.0.1
+description: "news headline theme for Grav"
+author:
+    name: Adam Burton
+    email: adamburton001@gmail.com
+    url: http://else.place
+license: MIT
