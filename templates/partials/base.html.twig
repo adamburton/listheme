@@ -1,1 +1,124 @@
+<!DOCTYPE html>
+<html lang="{{ theme_config.default_lang }}">
 
+<head>
+  {% block head %}
+    <title>{{ site.title }}</title>
+
+    <link rel="canonical" href="{{ page.url(true, true) }}">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="{{ url('theme://img/favicon.png') }}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+
+    {% block stylesheets %}
+      {% do assets.addCss('theme://css/w3.css') %}
+      {% do assets.addCss('https://fontlibrary.org/face/hi') %}
+      {% do assets.addCss('https://fontlibrary.org/face/cmu-concrete') %}
+      {% do assets.addCss('https://www.w3schools.com/lib/w3-theme-green.css') %}
+      {% do assets.addCss('theme://css/custom.css') %}
+    {% endblock %}
+
+    {{ assets.css() }}
+
+    {% block javascripts %}
+      {% do assets.addJs('jquery', '110') %}
+
+<!--   {% do assets.addJs('theme://js/singlepagenav.min.js') %}
+
+      {% if browser.getBrowser == 'msie' and browser.getVersion >= 8 and browser.getVersion <= 9 %}
+        {% do assets.add('theme://js/html5shiv.min.js') %}
+        {% do assets.add('theme://js/respond.min.js') %}
+      {% endif %}
+    {% endblock %}
+
+    {{ assets.js() }}
+-->
+
+  {% endblock head %}
+</head>
+
+<body class="w3-theme-d4">
+  <div class="wrapper">
+
+<!--  <div class="w3-bar">
+    <a href="#" class="w3-bar-item w3-button w3-hover-pale-red">Home</a>
+    <a href="#" class="w3-bar-item w3-button w3-hide-small w3-hover-pale-red">Link 1</a>
+    <a href="#" class="w3-bar-item w3-button w3-hide-small w3-hover-pale-red">Link 2</a>
+    <a href="#" class="w3-bar-item w3-button w3-hide-small w3-hover-pale-red">Link 3</a>
+    <a href="#" class="w3-bar-item w3-button w3-green w3-right w3-hover-pale-red">Link 4</a>
+    <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium w3-hover-pale-red" onclick="myNavMenu()">&#9776;</a>
+  </div>
+
+  <div id="demo" class="w3-bar-block w3-pale-red w3-hide w3-hide-large w3-hide-medium">
+    <a href="#" class="w3-bar-item w3-button w3-hover-pale-red">Link 1</a>
+    <a href="#" class="w3-bar-item w3-button w3-hover-pale-red">Link 2</a>
+    <a href="#" class="w3-bar-item w3-button w3-hover-pale-red">Link 3</a>
+  </div>
+-->
+  <div class="w3-bar">
+    {% for page in pages.children.visible %}
+      {% set current_page = (page.active or page.activeChild) ? 'active' : '' %}
+        <a href="{{ page.url }}" class="w3-bar-item w3-button w3-hover-pale-red">
+          {{ page.menu }}
+        </a>
+        <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium w3-hover-pale-red" onclick="myNavMenu()">&#9776;</a>
+    {% endfor %}
+  </div>
+  <div id="demo" class="w3-bar-block w3-pale-red w3-hide w3-hide-large w3-hide-medium">
+    {% for page in pages.children.visible %}
+      {% set current_page = (page.active or page.activeChild) ? 'active' : '' %}
+        <a href="{{ page.url }}" class="w3-bar-item w3-button w3-hover-pale-red">
+          {{ page.menu }}
+        </a>
+    {% endfor %}
+  </div>
+
+
+  <header class="w3-container w3-center w3-mobile">
+    <h1 class="w3-text-theme logo" style="text-shadow:2px 1px 0 #000">
+    <a style="text-decoration:none" href="{{ base_url}}">{{ site.title }}</a></h1>
+    <p><i>daily alternative news headlines</i></p>
+  </header>
+
+  <section class="w3-container">
+    {% block content %}{% endblock %}
+    </section>
+
+  {% block footer %}
+    <footer class="w3-container w3-padding-16 w3-center w3-xlarge">
+      <a href="#"><i class="fab fa-twitter"></i></a>
+      <p class="w3-medium">
+        powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a> & <a href="http://getgrav.org/" target="_blank">grav</a>
+      </p>
+    </footer>
+  {% endblock %}
+
+  {% block bottom %}
+    {{ assets.js('bottom') }}
+
+    <script>
+    function myFunction(id) {
+        var x = document.getElementById(id);
+        if (x.className.indexOf("w3-show") == -1) {
+            x.className += " w3-show";
+        } else {
+            x.className = x.className.replace(" w3-show", "");
+        }
+    }
+    </script>
+    <script>
+      function myNavMenu() {
+        var x = document.getElementById("demo");
+        if (x.className.indexOf("w3-show") == -1) {
+          x.className += " w3-show";
+        } else {
+          x.className = x.className.replace(" w3-show", "");
+        }
+      }
+    </script>
+
+  {% endblock %}
+</div>
+</body>
+</html>
